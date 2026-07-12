@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Gestor de Tareas</title>
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- Overlay del sidebar para mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-shell">
+
+    <!-- ─── Sidebar ──────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar" aria-label="Panel de navegación y filtros">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon" aria-hidden="true">✓</span>
+          <span class="logo-text">TaskFlow</span>
+        </div>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Cerrar menú">×</button>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Filtros">
+        <div class="nav-section">
+          <span class="nav-section-label" id="label-status">Estado</span>
+          <div id="statusFilters" role="group" aria-labelledby="label-status"></div>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-label" id="label-priority">Prioridad</span>
+          <div id="priorityFilters" role="group" aria-labelledby="label-priority"></div>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-label" id="label-date">Fecha</span>
+          <div id="dateFilters" role="group" aria-labelledby="label-date"></div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- ─── Área principal ───────────────────────────────── -->
+    <div class="main-wrapper">
+
+      <!-- Header -->
+      <header class="app-header">
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de filtros" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="search-container" id="searchContainer"></div>
+
+        <button class="btn btn-primary" id="newTaskBtn" aria-label="Crear nueva tarea">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          <span>Nueva Tarea</span>
+        </button>
+      </header>
+
+      <!-- Stats cards -->
+      <section class="stats-section" id="statsSection" aria-label="Estadísticas"></section>
+
+      <!-- Lista de tareas -->
+      <main class="task-main" id="taskMain">
+        <div class="task-toolbar">
+          <h2 class="task-count" id="taskCount" aria-live="polite" aria-atomic="true"></h2>
+          <div class="sort-controls" id="sortControls"></div>
+        </div>
+        <div id="taskList" role="region" aria-label="Lista de tareas"></div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ─── Modal ──────────────────────────────────────────── -->
+  <div
+    class="modal-overlay"
+    id="modalOverlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+    hidden
+  >
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ─── Toast notifications ────────────────────────────── -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="false"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
