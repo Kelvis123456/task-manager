@@ -1,10 +1,12 @@
 import { chromium } from 'playwright';
 import { join } from 'path';
+import { tmpdir } from 'os';
 
 const BASE = 'http://localhost:7341';
-const SCDIR = 'C:\\Users\\Usuario\\AppData\\Local\\Temp\\claude\\C--Users-Usuario\\c9339716-6903-4ac1-870e-46368f65d32f\\scratchpad';
+const SCDIR = process.env.SCREENSHOT_DIR ?? tmpdir();
 
 async function screenshot(page, name) {
+  // nosemgrep: javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal -- name is a hardcoded literal at each call site
   await page.screenshot({ path: join(SCDIR, `sc_${name}.png`), fullPage: false });
   console.log(`  [shot] ${name}`);
 }
