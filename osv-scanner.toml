@@ -8,3 +8,8 @@ id = "GHSA-g3hv-75wg-m249"
 ignoreUntil = 2027-01-08
 reason = "minimatch ReDoS, reached only through jest at dev time; the fix needs a breaking minimatch bump. Revisit then."
 
+[[IgnoredVulns]]
+id = "GHSA-gcqx-w48m-w2h4"
+ignoreUntil = 2027-01-08
+reason = "deepmerge, reached only through jest at dev time. No patched version exists yet. Revisit then."
+
